@@ -52,7 +52,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.POST)
     public void createUser(@RequestBody NewUserDTO user) {
-        userService.createUser(user.getUsername(), user.getEmail(), user.getPlainTextPassword());
+        userService.createUser(user.getUsername(), user.getEmail(), user.getRole(), user.getPlainTextPassword());
     }
 
 

@@ -7,7 +7,7 @@
     <display-name>Archetype Created Web Application</display-name>
 
     <welcome-file-list>
-        <welcome-file>/resources/minutes-tracker.html</welcome-file>
+        <welcome-file>/resources/time-tracker.html</welcome-file>
     </welcome-file-list>
 
 

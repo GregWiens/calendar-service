@@ -34,10 +34,10 @@ public class UserService {
 
     /**
      *
-     * updates the maximum minutes of a given user
+     * updates the maximum Minutes of a given user
      *
      * @param username - the currently logged in user
-     * @param newMaxMinutes - the new max daily minutes for the user
+     * @param newMaxMinutes - the new max daily Minutes for the user
      */
     @Transactional
     public void updateUserMaxMinutesPerDay(String username, Long newMaxMinutes) {
@@ -46,7 +46,7 @@ public class UserService {
         if (user != null) {
             user.setMaxMinutesPerDay(newMaxMinutes);
         } else {
-            LOGGER.info("User with username " + username + " could not have the max minutes updated.");
+            LOGGER.info("User with username " + username + " could not have the max Minutes updated.");
         }
     }
 
@@ -56,15 +56,17 @@ public class UserService {
      *
      * @param username - the username of the new user
      * @param email - the user email
+     * @param role - the user role
      * @param password - the user plain text password
      */
     @Transactional
-    public void createUser(String username, String email, String password) {
+    public void createUser(String username, String email, String role, String password) {
 
         assertNotBlank(username, "Username cannot be empty.");
         assertMinimumLength(username, 6, "Username must have at least 6 characters.");
         assertNotBlank(email, "Email cannot be empty.");
         assertMatches(email, EMAIL_REGEX, "Invalid email.");
+        assertNotBlank(role, "Role cannot be empty.");
         assertNotBlank(password, "Password cannot be empty.");
         assertMatches(password, PASSWORD_REGEX, "Password must have at least 6 characters, with 1 numeric and 1 uppercase character.");
 
@@ -72,7 +74,7 @@ public class UserService {
             throw new IllegalArgumentException("The username is not available.");
         }
 
-        User user = new User(username, new BCryptPasswordEncoder().encode(password), email, DEFAULT_MAX_CAL_PER_DAY);
+        User user = new User(username, new BCryptPasswordEncoder().encode(password), email, role, DEFAULT_MAX_CAL_PER_DAY);
 
         userRepository.save(user);
     }

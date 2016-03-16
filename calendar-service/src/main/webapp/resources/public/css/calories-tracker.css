@@ -30,14 +30,14 @@ header a {
 
 }
 
-.today-minutes-container {
+.today-activity-container {
     position: relative;
     height: 68px;
     display: inline-block;
     vertical-align: top;
 }
 
-.today-minutes {
+.today-activity {
     position: absolute;
     top: 50%;
     margin-top: -17px;
@@ -56,18 +56,18 @@ header a {
     color: #000000;
 }
 
-.today-minutes-placeholder {
+.today-activity-placeholder {
     width: 26px;
     display: inline-block;
 }
 
-.today-minutes.cal-limit-ok {
+.today-activity.cal-limit-ok {
     color: #eee;
     border: 2px solid darkgreen;
     background: green;
 }
 
-.today-minutes.cal-limit-nok {
+.today-activity.cal-limit-nok {
     color: #eee;
     border: 2px solid darkred;
     background: firebrick;
@@ -392,7 +392,7 @@ a.logout:hover {
 
 
 @media screen and (max-width: 585px) {
-    .today-minutes-container {
+    .today-activity-container {
         display: block;
     }
 }

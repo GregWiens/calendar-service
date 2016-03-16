@@ -1,4 +1,4 @@
-package com.gregwiens.calendar.config.root;
+	package com.gregwiens.calendar.config.root;
 
 
 import com.allanditzel.springframework.security.web.csrf.CsrfTokenResponseHeaderBindingFilter;
@@ -60,7 +60,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
             .anyRequest().authenticated()
             .and()
             .formLogin()
-            .defaultSuccessUrl("/calendar-service/resources/time-tracker.html")
+            .defaultSuccessUrl("/resources/time-tracker.html")
             .loginProcessingUrl("/authenticate")
             .usernameParameter("username")
             .passwordParameter("password")

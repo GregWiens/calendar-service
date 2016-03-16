@@ -56,7 +56,7 @@ public class EventRestWebServiceTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
-                .andExpect(jsonPath("$.['events'].[0].['description']").value("2 -  Chickpea with roasted cauliflower"));
+                .andExpect(jsonPath("$.['events'].[0].['description']").value("Meeting with Dave"));
     }
 
     @Test
@@ -76,13 +76,13 @@ public class EventRestWebServiceTest {
     public void deleteEvents() throws Exception {
         mockMvc.perform(delete("/event")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("[14]")
+                .content("[10]")
                 .accept(MediaType.APPLICATION_JSON)
                 .principal(new PrincipalImpl(UserServiceTest.USERNAME)))
                 .andDo(print())
                 .andExpect(status().isOk());
 
-        Event event = eventRepository.findEventById(14L);
+        Event event = eventRepository.findEventById(10L);
         assertNull("event no deleted", event);
     }
 

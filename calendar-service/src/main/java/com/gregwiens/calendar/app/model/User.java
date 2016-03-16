@@ -31,6 +31,7 @@ public class User extends AbstractEntity {
     private String username;
     private String passwordDigest;
     private String email;
+    private String role;
     private Long maxMinutesPerDay;
 
 
@@ -38,10 +39,11 @@ public class User extends AbstractEntity {
 
     }
 
-    public User(String username, String passwordDigest, String email, Long maxMinutesPerDay) {
+    public User(String username, String passwordDigest, String email, String role, Long maxMinutesPerDay) {
         this.username = username;
         this.passwordDigest = passwordDigest;
         this.email = email;
+        this.role = role;
         this.maxMinutesPerDay = maxMinutesPerDay;
     }
 
@@ -82,7 +84,16 @@ public class User extends AbstractEntity {
         return "User{" +
                 "username='" + username + '\'' +
                 ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
                 ", maxMinutesPerDay=" + maxMinutesPerDay +
                 '}';
     }
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 }

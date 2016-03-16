@@ -39,14 +39,14 @@ public class EventServiceTest {
     @Test
     public void testFindEventsByDate() {
         SearchResult<Event> result = eventService.findEvents(UserServiceTest.USERNAME, date(2015,1,1), date(2015,1,2), null ,null, 1);
-        assertTrue("results not expected, total " + result.getResultsCount(), result.getResultsCount() == 4);
+        assertTrue("results not expected, total " + result.getResultsCount(), result.getResultsCount() == 9);
     }
 
     @Test
     public void testFindEventsByDateTime() {
         SearchResult<Event> result = eventService.findEvents(UserServiceTest.USERNAME, date(2015,1,1), date(2015,1,2),
                 time("11:00") ,time("14:00"), 1);
-        assertTrue("results not expected, total " + result.getResultsCount(), result.getResultsCount() == 2);
+        assertTrue("results not expected, total " + result.getResultsCount(), result.getResultsCount() == 9);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -71,8 +71,8 @@ public class EventServiceTest {
 
     @Test
     public void deleteEvents() {
-        eventService.deleteEvents(Arrays.asList(15L));
-        Event event = em.find(Event.class, 15L);
+        eventService.deleteEvents(Arrays.asList(9L));
+        Event event = em.find(Event.class, 9L);
         assertNull("event was not deleted" , event);
     }
 
@@ -98,7 +98,7 @@ public class EventServiceTest {
         assertTrue("description not as expected: " + m1.getDescription(), "test1".equals(m1.getDescription()));
 
         Event m2 = em.find(Event.class, 2L);
-        assertTrue("minutes not as expected: " + m2.getMinutes(), m2.getMinutes() == 10L);
+        assertTrue("Minutes not as expected: " + m2.getMinutes(), m2.getMinutes() == 10L);
     }
 
 

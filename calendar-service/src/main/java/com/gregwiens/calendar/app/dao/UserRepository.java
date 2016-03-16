@@ -37,10 +37,10 @@ public class UserRepository {
 
     /**
      *
-     * find the total minutes that a given user has consumed so far in ongoing day
+     * find the total Minutes that a given user has consumed so far in ongoing day
      *
      * @param username
-     * @return the total number of minutes for the user for today
+     * @return the total number of Minutes for the user for today
      */
     public Long findTodaysMinutesForUser(String username) {
         return (Long) em.createNamedQuery(User.COUNT_TODAYS_MINUTES).setParameter("username", username).getSingleResult();

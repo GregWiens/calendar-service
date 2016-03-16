@@ -39,7 +39,7 @@ public class UserServiceTest {
         userService.updateUserMaxMinutesPerDay("test123", 300L);
 
         User user = findUserByUsername(USERNAME);
-        assertTrue("The user minutes where not updated: " + user.getMaxMinutesPerDay(),
+        assertTrue("The user Minutes where not updated: " + user.getMaxMinutesPerDay(),
                 user.getMaxMinutesPerDay() == 300L);
     }
 
@@ -58,7 +58,7 @@ public class UserServiceTest {
 
     @Test
     public void testCreateValidUser() {
-        userService.createUser("test456", "test@gmail.com","Password3");
+        userService.createUser("test456", "test@gmail.com", "owner", "Password3");
         User user = findUserByUsername("test456");
 
         assertTrue("username not expected " + user.getUsername(), "test456".equals(user.getUsername()) );
@@ -70,37 +70,42 @@ public class UserServiceTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testBlankUser() {
-        userService.createUser("", "test@gmail.com","Password3");
+        userService.createUser("", "test@gmail.com","owner", "Password3");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testUsernameLength() {
-        userService.createUser("test", "test@gmail.com","Password3");
+        userService.createUser("test", "test@gmail.com","owner", "Password3");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testUsernameAvailable() {
-        userService.createUser("test123", "test@gmail.com","Password3");
+        userService.createUser("test123", "test@gmail.com","owner", "Password3");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testBlankEmail() {
-        userService.createUser("test001", "","Password3");
+        userService.createUser("test001", "","owner", "Password3");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidEmail() {
-        userService.createUser("test001", "test","Password3");
+        userService.createUser("test001", "test","owner", "Password3");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testBlankRole() {
+        userService.createUser("test001", "test","", "Password3");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testBlankPassword() {
-        userService.createUser("test002", "test@gmail.com","");
+        userService.createUser("test002", "test@gmail.com","owner", "");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testPasswordPolicy() {
-        userService.createUser("test003", "test@gmail.com","Password");
+        userService.createUser("test003", "test@gmail.com","owner", "Password");
     }
 
 

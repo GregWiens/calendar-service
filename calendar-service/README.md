@@ -71,8 +71,8 @@ Url           |Verb          | Description
 
 Url           |Verb          | Description
 --------------|------------- | -------------
-/user         |GET          | retrieves info for the currently logged-in user (number of minutes of today, etc.) 
-/user| PUT| Used to save the user max minutes per day
+/user         |GET          | retrieves info for the currently logged-in user (number of activity of today, etc.) 
+/user| PUT| Used to save the user max activity per day
 /user|POST| creates a new user
 
 
@@ -92,7 +92,7 @@ Url           |Verb          | Description
 
 This snapshot shows the test code coverage for the app package:
 
-![alt Minutes Tracker test Code Coverage](http://d2huq83j2o5dyd.cloudfront.net/CodeCoverage.png)
+![alt activity Tracker test Code Coverage](http://d2huq83j2o5dyd.cloudfront.net/CodeCoverage.png)
 
 ## Installation instructions
 

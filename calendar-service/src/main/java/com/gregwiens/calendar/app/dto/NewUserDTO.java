@@ -9,6 +9,7 @@ public class NewUserDTO {
 
     private String username;
     private String email;
+    private String role;
     private String plainTextPassword;
 
     public NewUserDTO() {
@@ -37,4 +38,12 @@ public class NewUserDTO {
     public void setPlainTextPassword(String plainTextPassword) {
         this.plainTextPassword = plainTextPassword;
     }
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 }

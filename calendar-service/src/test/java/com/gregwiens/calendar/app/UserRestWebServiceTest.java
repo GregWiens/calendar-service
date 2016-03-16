@@ -57,14 +57,14 @@ public class UserRestWebServiceTest {
                 .andExpect(status().isOk());
 
         User user = userRepository.findUserByUsername(UserServiceTest.USERNAME);
-        assertTrue("max minutes not updated" + user.getMaxMinutesPerDay(), user.getMaxMinutesPerDay() == 200);
+        assertTrue("max Minutes not updated" + user.getMaxMinutesPerDay(), user.getMaxMinutesPerDay() == 200);
     }
 
     @Test
     public void testCreateUser() throws Exception {
         mockMvc.perform(post("/user")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"username\": \"testing123\", \"plainTextPassword\": \"Password5\", \"email\": \"test@gmail.com\"}")
+                .content("{\"username\": \"testing123\", \"plainTextPassword\": \"Password5\", \"role\": \"owner\", \"email\": \"test@gmail.com\"}")
                 .accept(MediaType.APPLICATION_JSON)
                 .principal(new PrincipalImpl(UserServiceTest.USERNAME)))
                 .andDo(print())
