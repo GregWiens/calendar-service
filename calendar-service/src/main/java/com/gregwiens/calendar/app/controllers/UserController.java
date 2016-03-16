@@ -38,7 +38,29 @@ public class UserController {
         User user = userService.findUserByUsername(principal.getName());
         Long todaysMinutes = userService.findTodaysMinutesForUser(principal.getName());
 
-        return user != null ? new UserInfoDTO(user.getUsername(), user.getMaxMinutesPerDay(), todaysMinutes) : null;
+        return user != null ? new UserInfoDTO(user.getUsername(), user.getRole(), user.getMaxMinutesPerDay(), todaysMinutes) : null;
+    }
+
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value="/{userName}", method = RequestMethod.GET)
+    public UserInfoDTO getUserInfoByUserName(@PathVariable String userName) {
+
+        User user = userService.findUserByUsername(userName);
+        Long todaysMinutes = userService.findTodaysMinutesForUser(userName);
+
+        return user != null ? new UserInfoDTO(user.getUsername(), user.getRole(), user.getMaxMinutesPerDay(), todaysMinutes) : null;
+    }
+
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value="/query", method = RequestMethod.GET)
+    public UserInfoDTO getUserInfoByUserNameQuery(@RequestParam(value="userName") String userName) {
+
+        User user = userService.findUserByUsername(userName);
+        Long todaysMinutes = userService.findTodaysMinutesForUser(userName);
+
+        return user != null ? new UserInfoDTO(user.getUsername(), user.getRole(), user.getMaxMinutesPerDay(), todaysMinutes) : null;
     }
 
     @ResponseBody
